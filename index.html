@@ -1,0 +1,392 @@
+<!DOCTYPE html><html lang="en" dir="ltr" translate="no" class="notranslate"><head><meta charset="utf-8"><meta name="author" content="Chundu Laboratories"><meta name="google" content="notranslate"><meta http-equiv="Content-Language" content="en"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#10131a">
+<link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Physiology"><meta name="application-name" content="Physiology"><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"><link rel="icon" type="image/png" href="favicon.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><title>Kiran's Physiology</title><style>:root{--bg:#f4f6fb;--fg:#1c2230;--card:#fff;--mut:#667085;--ac:#2f6fed;--ok:#1e9e5a;--bad:#d64545;--bd:#dde2ec;--nav:#ffffffee}
+[data-theme=dark]{--bg:#10131a;--fg:#e6e9f0;--card:#1b202b;--mut:#9aa3b2;--bd:#2c3342;--nav:#161a23ee}
+*{box-sizing:border-box}html{font-size:16px}body{margin:0;font:1rem/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--fg);-webkit-tap-highlight-color:transparent}
+header{position:sticky;top:0;z-index:6;background:var(--nav);backdrop-filter:blur(8px);border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:8px;padding:8px 12px}
+header h1{font-size:1.1rem;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ib{background:none;border:0;font-size:1.25rem;padding:6px 8px;cursor:pointer;color:var(--fg)}
+main{max-width:860px;margin:auto;padding:12px 12px 96px}
+nav.bot{position:fixed;bottom:0;left:0;right:0;z-index:6;background:var(--nav);backdrop-filter:blur(8px);border-top:1px solid var(--bd);display:flex;justify-content:space-around;padding:4px 2px calc(4px + env(safe-area-inset-bottom))}
+nav.bot a{flex:1;text-align:center;text-decoration:none;color:var(--mut);font-size:.7rem;padding:4px 0;border-radius:10px}
+nav.bot a b{display:block;font-size:1.3rem;line-height:1.3;font-weight:normal}
+nav.bot a.on{color:var(--ac);font-weight:700}
+button,.btn{font:inherit;background:var(--card);color:var(--fg);border:1px solid var(--bd);border-radius:12px;padding:9px 14px;cursor:pointer;text-decoration:none;display:inline-block}
+button.on,.primary{background:var(--ac)!important;color:#fff!important;border-color:var(--ac)!important}
+button:disabled{opacity:.85;cursor:default}
+.card,details{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px 14px;margin:10px 0}
+summary{font-weight:600;cursor:pointer}
+h2{font-size:1.25rem;margin:14px 0 8px}h3{font-size:1.05rem;margin:10px 0}
+.mut,.pill{color:var(--mut);font-size:.88rem}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}.chips.sc{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}.chips button{white-space:nowrap;padding:7px 12px}
+label{display:block;margin:12px 0 4px;font-weight:600}
+select,input[type=search],input[type=number],textarea{width:100%;font:inherit;padding:10px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--fg)}
+.big{width:100%;margin-top:14px;padding:13px}
+.opt{display:block;width:100%;text-align:left;margin:7px 0;white-space:normal}
+.opt.ok{background:var(--ok);color:#fff;border-color:var(--ok)}.opt.bad{background:var(--bad);color:#fff;border-color:var(--bad)}.opt.sel{outline:3px solid var(--ac)}
+.exp{border-left:4px solid var(--ac);background:var(--card);padding:8px 12px;border-radius:10px;margin-top:8px}
+.bar{height:8px;background:var(--bd);border-radius:4px;overflow:hidden}.bar div{height:100%;background:var(--ac)}
+figure{margin:10px 0;text-align:center}figure img,.qimg{max-width:100%;max-height:420px;background:#fff;border-radius:10px;display:block;margin:auto}
+figcaption{font-size:.85rem;color:var(--mut)}
+.flip{position:relative;height:240px;perspective:900px;cursor:pointer;margin-top:8px}
+.flip>div{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;border-radius:16px;background:var(--card);border:1px solid var(--bd);backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .45s;font-size:1.1rem}
+.flip .back{transform:rotateY(180deg);color:var(--ac);font-weight:600}.flipped .front{transform:rotateY(180deg)}.flipped .back{transform:rotateY(360deg)}
+.row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}.row.l{justify-content:flex-start}
+table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid var(--bd);padding:6px 4px;font-size:.88rem;text-align:left}td.n,th.n{text-align:right}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.stat{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px;text-align:center}.stat b{display:block;font-size:1.5rem;color:var(--ac)}
+.li{display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px solid var(--bd);cursor:pointer;color:inherit;text-decoration:none}.li:last-child{border-bottom:0}.li .t{flex:1}
+.star{background:none;border:0;font-size:1.3rem;color:#e0a800;padding:2px 6px;cursor:pointer}
+.sw{width:34px;height:34px;border-radius:50%;padding:0;border:3px solid transparent}.sw.on{border-color:var(--fg)!important}
+.tog{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--bd)}.tog:last-child{border-bottom:0}.tog input[type=checkbox]{width:22px;height:22px}
+.days{display:flex;align-items:flex-end;gap:4px;height:80px}.days div{flex:1;background:var(--ac);border-radius:4px 4px 0 0;min-height:2px;opacity:.85}
+.hi{background:#ffe58f;color:#000;border-radius:3px}
+.tm{float:right;font-weight:700}.tm.low{color:var(--bad)}
+.sm{padding:3px 9px;font-size:.8rem}
+/* v3.1 responsive hardening */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html,body{max-width:100%;overflow-x:hidden}
+body{overflow-wrap:anywhere;word-break:normal}
+*,*::before,*::after{box-sizing:border-box;min-width:0}
+img,video,svg,canvas{max-width:100%;height:auto}
+figure img,.qimg{width:auto;height:auto;max-height:min(420px,55vh)}
+header{padding-top:calc(8px + env(safe-area-inset-top));padding-left:calc(12px + env(safe-area-inset-left));padding-right:calc(12px + env(safe-area-inset-right))}
+main{width:100%;padding:12px max(10px,env(safe-area-inset-right)) calc(90px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left))}
+nav.bot{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+nav.bot a{min-width:0;font-size:clamp(.6rem,2.6vw,.75rem);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav.bot a b{font-size:clamp(1.05rem,5vw,1.3rem)}
+h1{font-size:clamp(1rem,4.4vw,1.15rem)!important}h2{font-size:clamp(1.05rem,4.8vw,1.25rem)}h3{font-size:clamp(.98rem,4.2vw,1.05rem)}
+button,.btn{max-width:100%;white-space:normal}
+.chips button{white-space:nowrap}
+select,input,textarea{max-width:100%}
+select{text-overflow:ellipsis}
+.tbl{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{table-layout:auto;word-break:normal;overflow-wrap:normal}
+td,th{overflow-wrap:anywhere}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.stat b{font-size:clamp(1.15rem,5.5vw,1.5rem)}
+.flip{height:clamp(200px,48vh,260px)}.flip>div{overflow:auto;font-size:clamp(.95rem,4.2vw,1.1rem)}
+.li .t{min-width:0}
+.tog span{flex:1}
+@media (max-width:340px){main{padding-left:8px;padding-right:8px}.card,details{padding:10px}button,.btn{padding:8px 10px}}
+th,td.n{white-space:nowrap;overflow-wrap:normal}td{overflow-wrap:break-word}td:first-child{min-width:110px}
+html,body{direction:ltr;unicode-bidi:isolate}
+/* image viewer */
+main img{cursor:zoom-in}
+#iv{position:fixed;inset:0;z-index:50;background:#000;display:none;touch-action:none;overscroll-behavior:contain;user-select:none;-webkit-user-select:none}
+#iv.on{display:block}
+#iv img{position:absolute;left:50%;top:50%;max-width:100vw;max-height:100vh;transform-origin:0 0;will-change:transform;background:#fff;cursor:grab;-webkit-user-drag:none;user-select:none}
+#iv .x{position:absolute;top:calc(10px + env(safe-area-inset-top));right:calc(10px + env(safe-area-inset-right));z-index:2;width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#000;font-size:1.4rem;padding:0}
+#iv .cap{position:absolute;left:0;right:0;bottom:0;padding:8px 12px calc(10px + env(safe-area-inset-bottom));color:#eee;font-size:.8rem;background:linear-gradient(transparent,rgba(0,0,0,.8));pointer-events:none}
+#iv .zb{position:absolute;top:calc(10px + env(safe-area-inset-top));left:calc(10px + env(safe-area-inset-left));z-index:2;display:flex;gap:6px}
+#iv .zb button{width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.85);color:#000;padding:0;font-size:1.2rem}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.thumbs figure{margin:0}.thumbs img{height:130px!important;width:100%;object-fit:contain;background:#fff;border-radius:8px}
+</style></head><body dir="ltr" translate="no">
+<header><button class="ib" id="bk" title="Back" aria-label="Back" onclick="appBack()" style="display:none;font-size:1.6rem;padding:2px 8px 6px 2px;line-height:1">←</button><img src="favicon.png" alt="" style="width:26px;height:26px;margin-right:8px;border-radius:6px"><h1 id="ttl">Physiology</h1><button class="ib" data-go="search" title="Search" aria-label="Search">🔍</button><button class="ib" data-go="bm" title="Bookmarks" aria-label="Bookmarks">★</button></header>
+<main id="view"></main>
+<nav class="bot"><a href="#/home" data-v="home"><b>🏠</b>Home</a><a href="#/study" data-v="study"><b>📖</b>Study</a><a href="#/quiz" data-v="quiz"><b>❓</b>Quiz</a><a href="#/study/pr" data-v="pract"><b>🔬</b>Practicals</a><a href="#/prog" data-v="prog"><b>📊</b>Progress</a><a href="#/set" data-v="set"><b>⚙️</b>Settings</a></nav>
+<script src="data/gp.js"></script><script src="data/bl.js"></script><script src="data/nm.js"></script><script src="data/gi.js"></script><script src="data/cv.js"></script><script src="data/rs.js"></script><script src="data/rn.js"></script><script src="data/en.js"></script><script src="data/rp.js"></script><script src="data/cn.js"></script><script src="data/ss.js"></script><script src="data/ip.js"></script><script src="data/pr.js"></script><script src="data/media.js"></script>
+<script>"use strict";
+const VER="1.5",K="kiranPhysio_v1";
+let LS=null;try{LS=window.localStorage;LS.getItem(K)}catch(e){LS=null}
+const DEF={theme:"system",accent:"#2f6fed",font:16,qn:10,timer:false,secs:45,expl:"now",shufOpt:true,goal:30,sound:false,vib:false};
+function norm(s){s=s&&typeof s=="object"?s:{};
+ for(const k of ["seen","missed","scores","tp","days","cdays","read","rdays"])if(!s[k]||typeof s[k]!="object")s[k]={};
+ s.bm=s.bm&&typeof s.bm=="object"?s.bm:{};s.bm.q=s.bm.q||{};s.bm.f=s.bm.f||{};
+ s.set=Object.assign({},DEF,s.set||{});s.last=s.last||null;s.cq=s.cq||null;s.lc=s.lc||null;s.v=3;return s}
+function load(){let s=null;try{s=JSON.parse(LS&&LS.getItem(K))}catch(e){}
+ if(!s){s={};try{const o=null;if(o){s.seen={};Object.values(o.seen||{}).forEach(m=>Object.assign(s.seen,m));s.missed=o.missed||{};s.scores=o.scores||{};s.set={theme:o.theme=="light"?"light":"dark"}}}catch(e){}}
+ return norm(s)}
+let S=load();
+const save=()=>{try{LS&&LS.setItem(K,JSON.stringify(S))}catch(e){}};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=t=>String(t==null?"":t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const pad=n=>String(n).padStart(2,"0");
+const dkey=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const today=()=>dkey(new Date());
+const REG=["gp","bl","nm","gi","cv","rs","rn","en","rp","cn","ss","ip","pr"].filter(r=>window.QB&&QB[r]);
+const D=r=>QB[r];
+const byId={},FCK={};
+REG.forEach(r=>{D(r).mcq.forEach(q=>byId[q.id]=q);D(r).fc.forEach(f=>FCK[r+"|"+f[0]]=[r,f])});
+const regOf=q=>q.id.split("-")[0];
+const chIdx=(r,t)=>D(r).topics.indexOf(t);
+const NQ=Object.keys(byId).length,NF=Object.keys(FCK).length,NCH=REG.reduce((a,r)=>a+D(r).topics.length,0);
+/* ---------- settings / theme ---------- */
+let mq=null;try{mq=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)")}catch(e){}
+function apply(){const st=S.set,th=st.theme=="system"?(mq&&mq.matches?"dark":"light"):st.theme;
+ const r=document.documentElement;r.dataset.theme=th;r.style.setProperty("--ac",st.accent);r.style.fontSize=(+st.font||16)+"px";
+ const m=document.querySelector('meta[name=theme-color]');if(m)m.content=th=="dark"?"#10131a":"#f4f6fb"}
+if(mq){try{mq.addEventListener("change",apply)}catch(e){try{mq.addListener(apply)}catch(_){}}}
+/* ---------- feedback ---------- */
+let AC=null;
+function feedback(ok){if(S.set.sound){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain(),t=AC.currentTime;o.type="sine";o.frequency.value=ok?880:220;g.gain.setValueAtTime(.18,t);g.gain.exponentialRampToValueAtTime(.001,t+.28);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.3)}catch(e){}}
+ if(S.set.vib){try{navigator.vibrate&&navigator.vibrate(ok?35:[70,50,70])}catch(e){}}}
+/* ---------- stats ---------- */
+function record(q,ok){S.seen[q.id]=1;if(ok)delete S.missed[q.id];else S.missed[q.id]=(S.missed[q.id]||0)+1;
+ const r=regOf(q),tp=(S.tp[r]=S.tp[r]||{}),T=(tp[q.t]=tp[q.t]||{c:0,n:0});T.n++;if(ok)T.c++;
+ const d=today();S.days[d]=(S.days[d]||0)+1}
+function streak(){let n=0;const d=new Date();if(!S.days[dkey(d)]&&!S.cdays[dkey(d)]&&!S.rdays[dkey(d)])d.setDate(d.getDate()-1);
+ while(S.days[dkey(d)]||S.cdays[dkey(d)]||S.rdays[dkey(d)]){n++;d.setDate(d.getDate()-1)}return n}
+function bestStreak(){const ks=[...new Set([...Object.keys(S.days),...Object.keys(S.cdays),...Object.keys(S.rdays)])].sort();let b=0,c=0,p=null;
+ ks.forEach(k=>{const d=new Date(k+"T12:00:00");c=p&&Math.round((d-p)/864e5)==1?c+1:1;b=Math.max(b,c);p=d});return b}
+function chStat(r,t){const x=(S.tp[r]||{})[t];return x&&x.n?x:null}
+const pct=x=>x&&x.n?Math.round(100*x.c/x.n):null;
+function weakTopics(n){const L=[];REG.forEach(r=>D(r).topics.forEach(t=>{const x=chStat(r,t);if(x&&x.n>=3&&x.c/x.n<.8)L.push({r,t,x,p:x.c/x.n})}));return L.sort((a,b)=>a.p-b.p||b.x.n-a.x.n).slice(0,n)}
+function totals(){let c=0,n=0;Object.values(S.tp).forEach(o=>Object.values(o).forEach(x=>{c+=x.c;n+=x.n}));return{c,n}}
+/* ---------- routing ---------- */
+let route=[];function toTop(){try{const e=document.scrollingElement||document.documentElement;if(e)e.scrollTop=0}catch(e){}}
+function go(p){const h="#/"+p;if(location.hash!==h)location.hash=h;else render()}
+const NAV=[];
+function navTrack(){const h=location.hash&&location.hash!="#/"?location.hash:"#/home";if(NAV.length>1&&NAV[NAV.length-2]==h)NAV.pop();else if(NAV[NAV.length-1]!==h)NAV.push(h);const b=document.getElementById("bk");if(b)b.style.display=route[0]=="home"||!(route[0]in TITLES)?"none":""}
+window.appBack=function(){if(window.ivOpen&&ivOpen()){closeViewer();return true}
+ if(route[0]=="home"||!(route[0]in TITLES))return false;
+ if(NAV.length>1)history.back();else{NAV.length=0;location.replace("#/home")}return true};
+window.addEventListener("hashchange",render);
+let timer=null;function clearTimer(){if(timer){clearInterval(timer);timer=null}}
+const TITLES={home:"Home",study:"Study",quiz:"Quiz",cards:"Flashcards",prog:"Progress",set:"Settings",about:"About",search:"Search",bm:"Bookmarks"};
+function render(){clearTimer();route=(location.hash.replace(/^#\/?/,"")||"home").split("/");const v=route[0]in TITLES?route[0]:"home";navTrack();
+ $$("nav.bot a").forEach(a=>a.classList.toggle("on",a.dataset.v==v||(v=="about"&&a.dataset.v=="set")));
+ $("#ttl").textContent=v=="home"?"Dashboard":TITLES[v];
+ const el=$("#view");({home,study,quiz,cards,prog,set:settings,about,search,bm:bookmarks})[v](el);
+ if(!(v=="search"))toTop()}
+/* ---------- shared bits ---------- */
+const starQ=id=>`<button class="star" data-bmq="${esc(id)}" title="Bookmark">${S.bm.q[id]?"★":"☆"}</button>`;
+const starF=k=>`<button class="star" data-bmf="${esc(k)}" title="Bookmark">${S.bm.f[k]?"★":"☆"}</button>`;
+function regOpts(sel,all){return(all?`<option value="all" ${sel=="all"?"selected":""}>All sections (${NQ})</option>`:"")+REG.map(r=>`<option value="${r}" ${r==sel?"selected":""}>${esc(D(r).name)} – ${esc(D(r).vol)}</option>`).join("")}
+function chOpts(r,sel,kind){if(r=="all")return`<option value="">All chapters</option>`;const d=D(r);
+ const cnt=t=>kind=="f"?d.fc.filter(f=>f[2]==t).length:d.mcq.filter(q=>q.t==t).length;
+ return`<option value="">All chapters (${kind=="f"?d.fc.length:d.mcq.length})</option>`+d.topics.map((t,i)=>`<option value="${i}" ${String(i)===String(sel)?"selected":""}>${i+1}. ${esc(t)} (${cnt(t)})</option>`).join("")}
+function qpool(r,ci){if(r=="all")return Object.values(byId);const d=D(r);return ci===""||ci==null?d.mcq:d.mcq.filter(q=>q.t==d.topics[+ci])}
+function fig(i){return`<figure><img src="images/${esc(i.f)}" alt="${esc(i.t||i.c)}" loading="lazy"><figcaption>${i.t?`<b>${esc(i.t)}</b> – `:""}${esc(i.c)}<br><small>Source: ${esc(i.by)} · ${esc(i.src)} via Wikimedia Commons (${esc(i.url)}) · Licence: ${esc(i.lic)}</small></figcaption></figure>`}
+function qcard(q){return`<div class="card">${starQ(q.id)}<small class="mut">${esc(D(regOf(q)).name)} · ${esc(q.t)}</small>${q.img?`<img class="qimg" src="images/${esc(q.img)}" alt="">`:""}<div><b>${esc(q.q)}</b></div><details style="border:0;padding:4px 0;margin:4px 0"><summary class="mut">Show answer</summary>✔ ${esc(q.o[q.a])}<br><small>${esc(q.e)}</small></details></div>`}
+function fcard(k){const x=FCK[k];if(!x)return"";const[r,f]=x;return`<div class="card">${starF(k)}<small class="mut">${esc(D(r).name)} · ${esc(f[2])}</small><div><b>${esc(f[0])}</b></div><div>${esc(f[1])}</div></div>`}
+/* ---------- quiz engine ---------- */
+function startQuiz(list,meta){if(!list.length){alert("No questions in this selection yet.");return}
+ S.cq=Object.assign({ids:list.map(q=>q.id),qi:0,score:0,ans:[],ord:[],done:false,t0:Date.now()},meta);
+ S.last={mode:"quiz",r:meta.r,ci:meta.ci};save();go("quiz/run")}
+function smartPick(L,n){const sc=q=>(S.missed[q.id]?0:S.seen[q.id]?2:1)+Math.random();return[...L].sort((a,b)=>sc(a)-sc(b)).slice(0,n)}
+function practise(r,t){startQuiz(shuf(smartPick(qpool(r,chIdx(r,t)),10)),{r,ci:String(chIdx(r,t)),label:D(r).name+" – "+t})}
+/* ---------- HOME ---------- */
+function dash(){const nr=Object.keys(S.read).filter(k=>{const[r,i]=k.split("|");return D(r)&&D(r).topics[+i]!=null}).length,p=Math.round(100*nr/NCH);
+ const lc=S.last&&S.last.r&&D(S.last.r)&&S.last.ci!=null&&D(S.last.r).topics[+S.last.ci]!=null?`<div class="card" id="dcont"><h3>📖 Last opened chapter</h3><p class="mut">${esc(D(S.last.r).name)} – ${esc(D(S.last.r).topics[+S.last.ci])}</p><button class="primary" data-go="study/${S.last.r}/${S.last.ci}">Continue</button></div>`:`<div class="card" id="dcont"><h3>📖 Last opened chapter</h3><p class="mut">No chapter opened yet.</p><button class="primary" data-go="study">Start studying</button></div>`;
+ const rows=REG.map(r=>{const d=D(r),rd=d.topics.filter((t,i)=>S.read[r+"|"+i]).length;let c=0,n=0;Object.values(S.tp[r]||{}).forEach(x=>{c+=x.c;n+=x.n});
+  return`<a class="li" href="#/study/${r}"><span class="t"><b>${esc(d.name)}</b><br><small class="mut">Read ${rd}/${d.topics.length} · Quiz ${n?Math.round(100*c/n)+"% ("+c+"/"+n+")":"not attempted"}</small><div class="bar" style="margin-top:4px"><div style="width:${100*rd/d.topics.length}%"></div></div></span>›</a>`}).join("");
+ return lc+`<div class="card" id="dread"><h3>✅ Chapters read: ${nr}/${NCH} (${p}%)</h3><div class="bar"><div style="width:${p}%"></div></div></div><h2>📊 Progress by section</h2><div class="card" id="dsec">${rows}</div>`}
+function home(v){const st=streak(),td=S.days[today()]||0,g=+S.set.goal||30,tot=totals(),w=weakTopics(5);
+ let cont="";
+ if(S.cq&&!S.cq.done)cont=`<div class="card"><h3>▶ Continue where you left off</h3><p class="mut">Quiz · ${esc(S.cq.label||"")} · question ${S.cq.qi+1}/${S.cq.ids.length} · score ${S.cq.score}</p><button class="primary" data-go="quiz/run">Resume quiz</button></div>`;
+ else if(S.cq&&S.cq.done&&S.cq.ids.length)cont=`<div class="card"><h3>▶ Continue where you left off</h3><p class="mut">Last quiz · ${esc(S.cq.label||"")} · ${S.cq.score}/${S.cq.ids.length} (${Math.round(100*S.cq.score/S.cq.ids.length)}%)</p><div class="row l"><button class="primary" id="again">New quiz on the same selection</button><button data-go="quiz/run">See results</button></div></div>`;
+ else if(S.lc&&FCdeck().length)cont=`<div class="card"><h3>▶ Continue where you left off</h3><p class="mut">Flashcards · ${esc(D(S.lc.r).name)}${S.lc.ci!==""?" – "+esc(D(S.lc.r).topics[+S.lc.ci]):""} · card ${S.lc.i+1}/${FCdeck().length}</p><button class="primary" data-go="cards">Resume flashcards</button></div>`;
+ else if(S.last&&S.last.mode=="study"&&D(S.last.r))cont=`<div class="card"><h3>▶ Continue where you left off</h3><p class="mut">Study · ${esc(D(S.last.r).name)} – ${esc(D(S.last.r).topics[+S.last.ci]||"")}</p><button class="primary" data-go="study/${S.last.r}/${S.last.ci}">Open chapter</button></div>`;
+ else cont=`<div class="card"><h3>👋 Welcome, Kiran</h3><p class="mut">${NQ} questions and ${NF} flashcards across ${REG.length} sections and ${NCH} chapters. Start with a quick quiz or open a chapter in Study.</p></div>`;
+ v.innerHTML=dash()+(S.last&&S.last.mode=="study"&&cont.includes("Open chapter")?"":cont)+`<div class="grid"><div class="stat"><b>🔥 ${st}</b>day streak<br><small class="mut">best ${bestStreak()}</small></div><div class="stat"><b>${td}/${g}</b>today's goal<div class="bar" style="margin-top:6px"><div style="width:${Math.min(100,100*td/g)}%"></div></div><small class="mut">${td>=g?"Goal reached 🎉":(g-td)+" questions to go"}</small></div><div class="stat"><b>${tot.n?Math.round(100*tot.c/tot.n)+"%":"–"}</b>accuracy<br><small class="mut">${tot.n} answered</small></div><div class="stat"><b>${Object.keys(S.seen).filter(id=>byId[id]).length}</b>of ${NQ} seen</div></div>
+ <h2>⚡ Quick start</h2><div class="row l"><button class="primary" id="q10">Quick 10 (mixed)</button><button data-go="quiz">Custom quiz</button><button id="rmiss">Review missed (${Object.keys(S.missed).filter(i=>byId[i]).length})</button><button data-go="bm">★ Bookmarks (${Object.keys(S.bm.q).length+Object.keys(S.bm.f).length})</button><button data-go="search">🔍 Search</button></div>
+ <h2>🎯 Weak chapters to revise</h2>`+(w.length?`<div class="card">`+w.map(x=>`<div class="li"><span class="t"><b>${esc(x.t)}</b><br><small class="mut">${esc(D(x.r).name)} · ${Math.round(100*x.p)}% of ${x.x.n} correct</small></span><button data-prac="${x.r}|${chIdx(x.r,x.t)}">Practise</button></div>`).join("")+`</div>`:`<p class="mut card">No weak chapters yet – a chapter shows up here once you have answered at least 3 of its questions with under 80% correct.</p>`)+
+ `<h2>📚 Sections</h2><div class="card">`+REG.map(r=>`<a class="li" href="#/study/${r}"><span class="t"><b>${esc(D(r).name)}</b><br><small class="mut">${esc(D(r).vol)} · ${D(r).topics.length} chapters · ${D(r).mcq.length} Q · ${D(r).fc.length} cards</small></span>›</a>`).join("")+`</div>`;
+ const ag=$("#again");if(ag)ag.onclick=()=>{QS.r=S.cq.r;QS.ci=S.cq.ci==null?"":String(S.cq.ci);S.cq=null;save();go("quiz")};
+ $("#q10").onclick=()=>startQuiz(shuf(smartPick(Object.values(byId),10)),{r:"all",ci:"",label:"Quick 10 (mixed)"});
+ $("#rmiss").onclick=()=>startQuiz(shuf(Object.keys(S.missed).map(i=>byId[i]).filter(Boolean)).slice(0,50),{r:"all",ci:"",label:"Missed questions",review:true})}
+/* ---------- STUDY ---------- */
+function study(v){const r=REG.includes(route[1])?route[1]:null;
+ if(!r){v.innerHTML=`<h2>Study by chapter</h2><p class="mut">Sections follow the NMC CBME Physiology (PY1–PY11) syllabus. Practicals has step-by-step procedures. Notes are original summaries checked against Guyton &amp; Hall, AK Jain and Sembulingam.</p><div class="card">`+REG.map(r=>`<a class="li" href="#/study/${r}"><span class="t"><b>${esc(D(r).name)}</b><br><small class="mut">${esc(D(r).vol)} · ${D(r).topics.length} chapters</small></span>›</a>`).join("")+`</div>`;return}
+ const d=D(r);
+ if(route[2]!=null&&d.topics[+route[2]]!=null){const ci=+route[2],t=d.topics[ci],F=d.fc.filter(f=>f[2]==t),Q=d.mcq.filter(q=>q.t==t),x=chStat(r,t);
+  S.last={mode:"study",r,ci};S.read[r+"|"+ci]=S.read[r+"|"+ci]||today();S.rdays[today()]=(S.rdays[today()]||0)+1;save();
+  v.innerHTML=`<p><a href="#/study/${r}">‹ ${esc(d.name)}</a></p><h2>${ci+1}. ${esc(t)}</h2>${(n=>`<div class="card note">${fmtNote(n[1])}${n[2]?`<p><b>More – mechanisms, regulation &amp; applied:</b><br>${fmtNote(n[2])}</p>`:""}${n[3]&&n[3].length?`<p><b>📝 Likely exam questions</b></p><ol>${n[3].map(x=>`<li>${esc(x)}</li>`).join("")}</ol>`:""}</div>`)(d.notes.find(n=>n[0]==t)||["","","",[]])}<p class="mut">${Q.length} questions · ${F.length} flashcards · ${x?pct(x)+"% of "+x.n+" correct":"not practised yet"}</p>
+  ${(()=>{const M=(window.MEDIA||{}).ch||{},m=M[r+"|"+t];if(!m)return"";const V=m.v&&MEDIA.vids[m.v];let h="";if(V)h+=`<h3>Video${m.x?"":" (related clip)"}</h3><div class="card"><video src="videos/${V.f}" controls muted loop playsinline preload="metadata" style="width:100%;border-radius:8px;background:#000"></video><small class="mut">${esc(V.title)} · ${esc(V.by)} · ${esc(V.lic)} · Wikimedia Commons${m.x?"":" — shared clip related to this topic"}</small></div>`;if(m.yt)h+=`<a class="btn" href="${esc(m.yt.url)}" target="_blank" rel="noopener" style="display:block;text-align:left;margin:8px 0;background:#c4302b;color:#fff;padding:10px 12px;border-radius:10px;text-decoration:none">▶ Watch on YouTube<br><b>${esc(m.yt.title)}</b><br><small>${esc(m.yt.channel)} · needs internet (opens YouTube app/browser)</small></a>`;return h})()}${(()=>{const I=d.imgs.filter(i=>i.ch==t);return I.length?`<h3>Images (${I.length})</h3><p class="mut" style="margin-top:0">Tap an image to open it full-screen; pinch or double-tap to zoom.</p>${I.map(fig).join("")}`:""})()}
+  <div class="row l"><button class="primary" id="cq">Quiz this chapter</button><button id="cf">Flashcards</button>${ci>0?`<a class="btn" href="#/study/${r}/${ci-1}">‹ Prev</a>`:""}${ci<d.topics.length-1?`<a class="btn" href="#/study/${r}/${ci+1}">Next ›</a>`:""}</div>
+  <h3>Key facts</h3><div class="card">`+F.map(f=>{const k=r+"|"+f[0];return`<div class="li" style="cursor:default"><span class="t"><b>${esc(f[0])}</b><br>${esc(f[1])}</span>${starF(k)}</div>`}).join("")+`</div>`;
+  $("#cq").onclick=()=>startQuiz(shuf(smartPick(Q,S.set.qn=="All"?Q.length:Math.min(Q.length,+S.set.qn||10))),{r,ci:String(ci),label:d.name+" – "+t});
+  $("#cf").onclick=()=>{S.lc={r,ci:String(ci),bmOnly:false,i:0,order:null};save();go("cards")};return}
+ v.innerHTML=`<p><a href="#/study">‹ All sections</a></p><h2>${esc(d.name)}</h2><p class="mut">${esc(d.vol)} · ${d.mcq.length} questions · ${d.fc.length} flashcards</p><h3>Chapters</h3><div class="card">`+
+ d.topics.map((t,i)=>{const x=chStat(r,t);return`<a class="li" href="#/study/${r}/${i}"><span class="t"><b>${i+1}. ${esc(t)}</b><br><small class="mut">${d.mcq.filter(q=>q.t==t).length} Q · ${d.fc.filter(f=>f[2]==t).length} cards${(n=>n?" · "+n+" 🖼":"")(d.imgs.filter(i=>i.ch==t).length)}${x?" · "+pct(x)+"% correct":""}</small></span>›</a>`}).join("")+`</div>`+
+ (d.notes.length?`<h3>Summary notes</h3>`+d.notes.map(n=>`<details><summary>${esc(n[0])}</summary><p>${esc(n[1])}</p></details>`).join(""):"")+
+ (d.imgs.length?`<details><summary>🖼 Labelled images (${d.imgs.length})</summary>${d.imgs.map(fig).join("")}</details>`:"")}
+function fmtNote(x){return esc(x).replace(/ (\d{1,2})\) /g,"<br><b>$1)</b> ").replace(/(Steps?:|Principle:|Normal:|Interpretation:|Calculation:|Precautions:|Sources of error:)/g,"<br><b>$1</b>").replace(/^<br>/,"")}
+/* ---------- QUIZ ---------- */
+let QS={r:null,ci:"",n:null,p:"all"};
+function quiz(v){if(route[1]=="run")return run(v);
+ if(QS.r==null){QS.r=S.last&&S.last.r&&(S.last.r=="all"||D(S.last.r))?S.last.r:"gp";QS.ci=S.last&&S.last.r==QS.r&&S.last.ci!=null?String(S.last.ci):""}
+ if(QS.n==null)QS.n=String(S.set.qn);
+ const L=qpool(QS.r,QS.ci),cnt={all:L.length,unseen:L.filter(q=>!S.seen[q.id]).length,img:L.filter(q=>q.img).length,missed:L.filter(q=>S.missed[q.id]).length,bm:L.filter(q=>S.bm.q[q.id]).length};
+ v.innerHTML=(S.cq&&!S.cq.done?`<div class="card">Unfinished quiz: ${esc(S.cq.label||"")} (${S.cq.qi}/${S.cq.ids.length}) <button class="primary" data-go="quiz/run">Resume</button></div>`:"")+
+ `<h2>New quiz</h2><label>Section</label><select id="qr">${regOpts(QS.r,true)}</select><label>Chapter</label><select id="qc" ${QS.r=="all"?"disabled":""}>${chOpts(QS.r,QS.ci,"q")}</select>
+ <label>Number of questions</label><div class="chips" id="qn">${["10","25","50","All"].map(c=>`<button class="${c==QS.n?"on":""}" data-n="${c}">${c}</button>`).join("")}</div>
+ <label>Question pool</label><div class="chips" id="qp">${[["all","All"],["unseen","Unseen first"],["img","Images only"],["missed","Missed"],["bm","Bookmarked"]].map(([k,l])=>`<button class="${k==QS.p?"on":""}" data-p="${k}">${l} (${cnt[k]})</button>`).join("")}</div>
+ <p class="mut">Timer: ${S.set.timer?S.set.secs+" s/question":"off"} · Explanations: ${S.set.expl=="now"?"after each answer":"at the end"} · Options ${S.set.shufOpt?"shuffled":"in fixed order"} – change in Settings.</p>
+ <button class="primary big" id="go">Start quiz →</button>`;
+ $("#qr").onchange=e=>{QS.r=e.target.value;QS.ci="";quiz(v)};$("#qc").onchange=e=>{QS.ci=e.target.value;quiz(v)};
+ $$("#qn button").forEach(b=>b.onclick=()=>{QS.n=b.dataset.n;quiz(v)});$$("#qp button").forEach(b=>b.onclick=()=>{QS.p=b.dataset.p;quiz(v)});
+ $("#go").onclick=()=>{let P=L;if(QS.p=="img")P=P.filter(q=>q.img);if(QS.p=="missed")P=P.filter(q=>S.missed[q.id]);if(QS.p=="bm")P=P.filter(q=>S.bm.q[q.id]);
+  P=QS.p=="unseen"?[...shuf(P.filter(q=>!S.seen[q.id])),...shuf(P.filter(q=>S.seen[q.id]))]:shuf(P);if(QS.n!="All")P=P.slice(0,+QS.n);
+  const lab=(QS.r=="all"?"All sections":D(QS.r).name)+(QS.ci!==""&&QS.r!="all"?" – "+D(QS.r).topics[+QS.ci]:"");startQuiz(P,{r:QS.r,ci:QS.ci,label:lab})}}
+function run(v){const c=S.cq;if(!c){go("quiz");return}if(c.qi>=c.ids.length||c.done)return finish(v);
+ const q=byId[c.ids[c.qi]];if(!q){c.qi++;save();return run(v)}
+ if(!c.ord[c.qi])c.ord[c.qi]=S.set.shufOpt?shuf([0,1,2,3]):[0,1,2,3];const ord=c.ord[c.qi],a=c.ans[c.qi],done=a!==undefined&&a!==null,now=S.set.expl=="now";
+ v.innerHTML=`<div class="bar"><div style="width:${100*c.qi/c.ids.length}%"></div></div><p class="pill">${esc(c.label||"")}<br>Q ${c.qi+1}/${c.ids.length}${now?" · Score "+c.score:""} · <small>${esc(q.t)}</small>${S.set.timer&&!done?`<span class="tm" id="tm">${S.set.secs}s</span>`:""}</p>
+ <div class="card">${starQ(q.id)}${q.img?`<img class="qimg" src="images/${esc(q.img)}" alt="Identify">`:""}<h3>${esc(q.q)}</h3>`+
+ ord.map((oi,k)=>{let cl="opt";if(done){if(now){if(oi==q.a)cl+=" ok";else if(oi==a)cl+=" bad"}else if(oi==a)cl+=" sel"}return`<button class="${cl}" data-i="${oi}" ${done?"disabled":""}>${String.fromCharCode(65+k)}. ${esc(q.o[oi])}</button>`}).join("")+
+ (done?(now?`<p class="exp"><b>${a==q.a?"✔ Correct":a==-1?"⏰ Time up":"✘ Incorrect"}.</b> ${esc(q.e)}</p>`:`<p class="mut">${a==-1?"⏰ Time up – ":""}Answer saved. Explanations will be shown at the end.</p>`):"")+`</div>
+ <div class="row">${done?`<button class="primary" id="nx">${c.qi+1<c.ids.length?"Next →":"Finish"}</button>`:""}<button id="quit">End quiz</button></div>`;
+ const answer=i=>{if(c.ans[c.qi]!==undefined&&c.ans[c.qi]!==null)return;clearTimer();c.ans[c.qi]=i;const ok=i==q.a;if(ok)c.score++;record(q,ok);feedback(ok);save();run(v)};
+ $$(".opt").forEach(b=>b.onclick=()=>answer(+b.dataset.i));
+ if(done){$("#nx").onclick=()=>{c.qi++;save();run(v);toTop()};const n=$("#nx");n.scrollIntoView&&n.scrollIntoView({block:"nearest"})}
+ $("#quit").onclick=()=>{if(c.qi==0&&!done||confirm("End this quiz now?")){c.ids=c.ids.slice(0,c.qi+(done?1:0));c.done=true;save();run(v)}};
+ if(S.set.timer&&!done){let left=+S.set.secs||45;clearTimer();timer=setInterval(()=>{left--;const t=$("#tm");if(t){t.textContent=left+"s";t.classList.toggle("low",left<=5)}if(left<=0){clearTimer();answer(-1)}},1000)}}
+function finish(v){const c=S.cq,n=c.ids.length;
+ if(!c.done){c.done=true}
+ if(!c.scored&&n){c.scored=true;if(!c.review&&D(c.r)){const s=S.scores[c.r]||{bestPct:0,attempts:0},p=Math.round(100*c.score/n);S.scores[c.r]={last:c.score,total:n,bestPct:Math.max(s.bestPct||0,p),attempts:(s.attempts||0)+1}}}
+ save();const now=S.set.expl=="now";
+ const items=c.ids.map((id,i)=>({q:byId[id],a:c.ans[i]})).filter(x=>x.q&&(!now||x.a!==x.q.a));
+ v.innerHTML=`<h2>Done: ${c.score}/${n} ${n?`(${Math.round(100*c.score/n)}%)`:""}</h2><p class="mut">${esc(c.label||"")}</p>
+ <div class="row l"><button class="primary" id="nq">New quiz</button>${c.ids.some((id,i)=>byId[id]&&c.ans[i]!==byId[id].a)?`<button id="rw">Retry wrong ones</button>`:""}<button data-go="home">Home</button></div>`+
+ (items.length?`<h3>${now?"Review mistakes":"Review all answers"}</h3>`+items.map(({q,a})=>`<div class="card">${starQ(q.id)}<small class="mut">${esc(q.t)}</small><br><b>${esc(q.q)}</b><br>${a===q.a?"✔":"✘"} Your answer: ${a==null||a==-1?"<i>none</i>":esc(q.o[a])}<br>✔ Correct: <b>${esc(q.o[q.a])}</b><br><small>${esc(q.e)}</small></div>`).join(""):n?"<p>Perfect score! 🎉</p>":"");
+ $("#nq").onclick=()=>{S.cq=null;save();go("quiz")};
+ const rw=$("#rw");if(rw)rw.onclick=()=>startQuiz(shuf(c.ids.filter((id,i)=>byId[id]&&c.ans[i]!==byId[id].a).map(id=>byId[id])),{r:c.r,ci:c.ci,label:"Retry: "+(c.label||""),review:true})}
+/* ---------- FLASHCARDS ---------- */
+function FCbase(lc){const d=D(lc.r);if(!d)return[];let F=d.fc;if(lc.ci!==""&&lc.ci!=null)F=F.filter(f=>f[2]==d.topics[+lc.ci]);let K=F.map(f=>lc.r+"|"+f[0]);if(lc.bmOnly)K=K.filter(k=>S.bm.f[k]);return K}
+function FCdeck(){const lc=S.lc;if(!lc)return[];const base=FCbase(lc),set=new Set(base);
+ if(!lc.order||lc.order.length!=base.length||!lc.order.every(k=>set.has(k)))lc.order=base;return lc.order}
+function cards(v){if(!S.lc||!D(S.lc.r))S.lc={r:"gp",ci:"",bmOnly:false,i:0,order:null};const lc=S.lc,deck=FCdeck();if(lc.i>=deck.length)lc.i=0;
+ S.last={mode:"cards",r:lc.r,ci:lc.ci};save();
+ const k=deck[lc.i],x=k&&FCK[k];
+ v.innerHTML=`<label>Section</label><select id="fr">${regOpts(lc.r,false)}</select><label>Chapter</label><select id="fcs">${chOpts(lc.r,lc.ci,"f")}</select>
+ <div class="tog"><span>Bookmarked cards only</span><input type="checkbox" id="fb" ${lc.bmOnly?"checked":""}></div>`+
+ (x?`<p class="pill">${esc(x[1][2])} · Card ${lc.i+1}/${deck.length} – tap card to flip ${starF(k)}</p><div class="flip" id="fl"><div class="front">${esc(x[1][0])}</div><div class="back">${esc(x[1][1])}</div></div>
+ <div class="row"><button id="pv">← Prev</button><button id="sh">🔀 Shuffle</button><button id="rs">↺ In order</button><button class="primary" id="nx2">Next →</button></div>`:`<p class="card mut">No cards here${lc.bmOnly?" – bookmark some cards with ☆ first":""}.</p>`);
+ $("#fr").onchange=e=>{S.lc={r:e.target.value,ci:"",bmOnly:lc.bmOnly,i:0,order:null};cards(v)};
+ $("#fcs").onchange=e=>{lc.ci=e.target.value;lc.i=0;lc.order=null;cards(v)};
+ $("#fb").onchange=e=>{lc.bmOnly=e.target.checked;lc.i=0;lc.order=null;cards(v)};
+ if(!x)return;let seenThis=false;
+ const mark=()=>{if(!seenThis){seenThis=true;const d=today();S.cdays[d]=(S.cdays[d]||0)+1;save()}};
+ $("#fl").onclick=()=>{$("#fl").classList.toggle("flipped");mark()};
+ $("#pv").onclick=()=>{lc.i=(lc.i-1+deck.length)%deck.length;cards(v)};$("#nx2").onclick=()=>{mark();lc.i=(lc.i+1)%deck.length;cards(v)};
+ $("#sh").onclick=()=>{lc.order=shuf(deck);lc.i=0;cards(v)};$("#rs").onclick=()=>{lc.order=FCbase(lc);lc.i=0;cards(v)}}
+/* ---------- PROGRESS ---------- */
+function prog(v){const tot=totals(),miss=Object.keys(S.missed).filter(i=>byId[i]).map(i=>byId[i]).sort((a,b)=>S.missed[b.id]-S.missed[a.id]);
+ const dd=[];for(let i=13;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);dd.push([dkey(d),S.days[dkey(d)]||0])}const mx=Math.max(1,...dd.map(x=>x[1]));
+ v.innerHTML=`<div class="grid"><div class="stat"><b>${tot.n}</b>answered</div><div class="stat"><b>${tot.n?Math.round(100*tot.c/tot.n)+"%":"–"}</b>accuracy</div><div class="stat"><b>🔥 ${streak()}</b>streak (best ${bestStreak()})</div><div class="stat"><b>${miss.length}</b>to review</div></div>
+ <h2>Last 14 days</h2><div class="card"><div class="days">${dd.map(([k,n])=>`<div title="${k}: ${n}" style="height:${Math.max(2,100*n/mx)}%"></div>`).join("")}</div><small class="mut">Questions answered per day · goal ${S.set.goal}/day</small></div>
+ <h2>By section</h2><div class="card tbl"><table><tr><th>Section</th><th class="n">Seen</th><th class="n">Acc.</th><th class="n">Last</th><th class="n">Best</th><th class="n">Missed</th></tr>`+
+ REG.map(r=>{const d=D(r),s=S.scores[r];let c=0,n=0;Object.values(S.tp[r]||{}).forEach(x=>{c+=x.c;n+=x.n});return`<tr><td>${esc(d.name)}</td><td class="n">${d.mcq.filter(q=>S.seen[q.id]).length}/${d.mcq.length}</td><td class="n">${n?Math.round(100*c/n)+"%":"–"}</td><td class="n">${s?s.last+"/"+s.total:"–"}</td><td class="n">${s?s.bestPct+"%":"–"}</td><td class="n">${miss.filter(q=>regOf(q)==r).length}</td></tr>`}).join("")+`</table></div>
+ <h2>By chapter</h2>`+REG.map(r=>{const d=D(r);return`<details><summary>${esc(d.name)}</summary><div class="tbl"><table><tr><th>Chapter</th><th class="n">Qs</th><th class="n">Done</th><th class="n">Acc.</th><th class="n">Missed</th><th></th></tr>`+
+  d.topics.map(t=>({t,x:chStat(r,t)})).sort((a,b)=>(a.x?a.x.c/a.x.n:2)-(b.x?b.x.c/b.x.n:2)).map(({t,x})=>`<tr><td>${esc(t)}</td><td class="n">${d.mcq.filter(q=>q.t==t).length}</td><td class="n">${x?x.n:0}</td><td class="n">${x?pct(x)+"%":"–"}</td><td class="n">${miss.filter(q=>regOf(q)==r&&q.t==t).length}</td><td><button class="sm" data-prac="${r}|${chIdx(r,t)}">Practise</button></td></tr>`).join("")+`</table></div></details>`}).join("")+
+ `<h2>Missed questions (${miss.length})</h2>`+(miss.length?`<button class="primary" id="rv">Re-quiz missed (up to 50)</button>`+miss.slice(0,100).map(q=>qcard(q).replace('<small class="mut">',`<small class="mut">missed ${S.missed[q.id]}× · `)).join("")+(miss.length>100?`<p class="mut">…and ${miss.length-100} more</p>`:""):`<p class="mut">No missed questions yet.</p>`);
+ const rv=$("#rv");if(rv)rv.onclick=()=>startQuiz(shuf(miss).slice(0,50),{r:"all",ci:"",label:"Missed questions",review:true})}
+/* ---------- SETTINGS ---------- */
+const ACC=["#2f6fed","#1e9e5a","#d64545","#8e44ad","#e67e22","#0aa2b5","#d63384","#5c6370"];
+function settings(v){const s=S.set;
+ v.innerHTML=`<h2>Appearance</h2><div class="card"><label style="margin-top:0">Theme</label><div class="chips" id="th">${[["light","☀️ Light"],["dark","🌙 Dark"],["system","📱 System"]].map(([k,l])=>`<button class="${s.theme==k?"on":""}" data-th="${k}">${l}</button>`).join("")}</div>
+ <label>Accent colour</label><div class="chips" id="acc">${ACC.map(c=>`<button class="sw ${s.accent==c?"on":""}" data-c="${c}" style="background:${c}" title="${c}"></button>`).join("")}<input type="color" id="accx" value="${esc(s.accent)}" title="Custom colour" style="width:44px;height:34px;border:0;background:none"></div>
+ <label>Font size: <span id="fsv">${s.font}px</span></label><input type="range" id="fs" min="13" max="22" step="1" value="${s.font}" style="width:100%"></div>
+ <h2>Quiz defaults</h2><div class="card"><label style="margin-top:0">Default number of questions</label><div class="chips" id="qn">${["10","25","50","All"].map(c=>`<button class="${String(s.qn)==c?"on":""}" data-n="${c}">${c}</button>`).join("")}</div>
+ <div class="tog"><span>Timer</span><input type="checkbox" id="tmr" ${s.timer?"checked":""}></div>
+ <div class="tog"><span>Seconds per question</span><input type="number" id="secs" min="5" max="600" value="${s.secs}" style="width:100px" ${s.timer?"":"disabled"}></div>
+ <label>Show explanation</label><div class="chips" id="ex"><button class="${s.expl=="now"?"on":""}" data-x="now">Immediately</button><button class="${s.expl=="end"?"on":""}" data-x="end">At the end</button></div>
+ <div class="tog"><span>Shuffle answer options</span><input type="checkbox" id="so" ${s.shufOpt?"checked":""}></div></div>
+ <h2>Goal & feedback</h2><div class="card"><div class="tog"><span>Daily goal (questions)</span><input type="number" id="goal" min="1" max="1000" value="${s.goal}" style="width:100px"></div>
+ <div class="tog"><span>Sound on answer</span><input type="checkbox" id="snd" ${s.sound?"checked":""}></div>
+ <div class="tog"><span>Vibrate on answer</span><input type="checkbox" id="vib" ${s.vib?"checked":""}></div></div>
+ <h2>Your data</h2><div class="card"><p class="mut" style="margin-top:0">Progress, streaks, bookmarks and settings are stored only on this device.</p>
+ <div class="row l"><button id="exp">⬇ Export progress (JSON)</button><button id="imp">⬆ Import from file</button><input type="file" id="impf" accept=".json,application/json" style="display:none"></div>
+ <details style="margin:10px 0 0"><summary>Copy / paste JSON instead</summary><textarea id="js" rows="6" placeholder="Paste exported JSON here"></textarea><div class="row l"><button id="cpy">Show my data</button><button id="pst">Import pasted JSON</button></div></details>
+ <div class="row l"><button id="rst" style="color:var(--bad)">🗑 Reset progress…</button></div><p class="mut" id="msg"></p></div>
+ <a class="btn big" href="#/about" style="text-align:center">ℹ️ About & image credits</a><p class="mut" style="text-align:center;font-size:.8rem;margin-top:14px">© 2026 Chundu Laboratories. All rights reserved.<br>Third-party images and videos remain under their own licences.</p>`;
+ const upd=(k,val,rr)=>{S.set[k]=val;save();apply();if(rr)settings(v)};
+ $$("#th button").forEach(b=>b.onclick=()=>upd("theme",b.dataset.th,1));
+ $$("#acc .sw").forEach(b=>b.onclick=()=>upd("accent",b.dataset.c,1));$("#accx").onchange=e=>upd("accent",e.target.value,1);
+ $("#fs").oninput=e=>{$("#fsv").textContent=e.target.value+"px";upd("font",+e.target.value)};
+ $$("#qn button").forEach(b=>b.onclick=()=>{upd("qn",b.dataset.n,1);QS.n=null});
+ $("#tmr").onchange=e=>upd("timer",e.target.checked,1);
+ $("#secs").onchange=e=>upd("secs",Math.max(5,Math.min(600,+e.target.value||45)),1);
+ $$("#ex button").forEach(b=>b.onclick=()=>upd("expl",b.dataset.x,1));
+ $("#so").onchange=e=>upd("shufOpt",e.target.checked);
+ $("#goal").onchange=e=>upd("goal",Math.max(1,Math.min(1000,+e.target.value||30)),1);
+ $("#snd").onchange=e=>{upd("sound",e.target.checked);if(e.target.checked)feedback(true)};
+ $("#vib").onchange=e=>{upd("vib",e.target.checked);if(e.target.checked)feedback(true)};
+ const msg=t=>{$("#msg").textContent=t};
+ const dump=()=>JSON.stringify({app:"kiran-physiology",version:VER,exported:new Date().toISOString(),data:S},null,1);
+ $("#exp").onclick=()=>{const name="physiology-progress-"+today()+".json",txt=dump();
+  if(window.AndroidBridge&&AndroidBridge.saveJson){try{msg(AndroidBridge.saveJson(name,txt))}catch(e){msg("Export failed: "+e)}return}
+  try{const u=URL.createObjectURL(new Blob([txt],{type:"application/json"})),a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);msg("Saved "+name+" to your downloads.")}
+  catch(e){$("#js").value=txt;msg("Download not available here – copy the JSON from the box below.")}};
+ const doImport=txt=>{let o;try{o=JSON.parse(txt)}catch(e){msg("That is not valid JSON.");return}
+  const d=o&&o.data?o.data:o;if(!d||typeof d!="object"||!("seen"in d||"tp"in d||"set"in d)){msg("This file doesn't look like a Physiology progress export.");return}
+  if(!confirm("Replace your current progress, bookmarks and settings with the imported data?"))return;S=norm(d);save();apply();settings(v);$("#msg").textContent="Import complete ✔"};
+ $("#imp").onclick=()=>$("#impf").click();
+ $("#impf").onchange=e=>{const f=e.target.files&&e.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>doImport(String(rd.result));rd.readAsText(f)};
+ $("#cpy").onclick=()=>{$("#js").value=dump();$("#js").select&&$("#js").select()};
+ $("#pst").onclick=()=>doImport($("#js").value);
+ $("#rst").onclick=()=>{if(confirm("Reset ALL progress – chapters read, answers, quiz scores, streak, missed list and bookmarks? Settings are kept. This cannot be undone.")){const st=S.set;S=norm({set:st});save();settings(v);$("#msg").textContent="Progress reset."}}}
+/* ---------- ABOUT ---------- */
+function about(v){const imgs=[];REG.forEach(r=>D(r).imgs.forEach(i=>imgs.push([r,i])));
+ v.innerHTML=`<p><a href="#/set">‹ Settings</a></p><div class="card" style="text-align:center"><img src="apple-touch-icon.png" alt="" style="width:72px;height:72px;border-radius:16px"><h2 style="margin:6px 0">Kiran's Physiology</h2><p class="mut">Version ${VER} · offline study app for MBBS 1st-year physiology (NMC CBME)</p></div>
+ <div class="card"><b>Content</b><p>${REG.length} sections · ${NCH} chapters · ${NQ} MCQs · ${NF} flashcards · ${imgs.length} images.</p>
+ <p>Sections follow the NMC Competency-Based Medical Education (CBME) 1st-year Physiology syllabus (PY1 General, PY2 Blood, PY3 Nerve &amp; muscle, PY4 GIT, PY5 CVS, PY6 Respiratory, PY7 Renal, PY8 Endocrine, PY9 Reproduction, PY10 CNS &amp; special senses, PY11 Integrated) plus a Practicals section. Notes, questions and explanations are original summaries written to agree with the standard textbooks below; check doubtful points with your textbook and teachers.</p><p><b>Reference textbooks</b><br>• Hall JE, Hall ME. <i>Guyton and Hall Textbook of Medical Physiology</i>, 14th ed. Elsevier.<br>• Jain AK. <i>Textbook of Physiology</i> (Vols 1–2). Avichal Publishing.<br>• Sembulingam K, Sembulingam P. <i>Essentials of Medical Physiology</i>. Jaypee.<br>• Jain AK. <i>Manual of Practical Physiology for MBBS</i>. Avichal Publishing.<br>• Ghai CL. <i>A Textbook of Practical Physiology</i>. Jaypee.<br>This app is not affiliated with or endorsed by these authors or publishers, and no text or figures are copied from them.</p></div>
+ <div class="card"><b>Image credits</b><p class="mut">All images are openly licensed (CC BY, CC BY-SA, CC0 or public domain) and were obtained from Wikimedia Commons; author, licence and source page are listed for each. Many diagrams are from OpenStax <i>Anatomy &amp; Physiology</i> (Rice University, openstax.org, CC BY 3.0/4.0). Images were only resized and converted to WebP. CC BY-SA images remain under CC BY-SA; licence texts: creativecommons.org/licenses.</p>${(()=>{const c={};imgs.forEach(([r,i])=>{const k=i.lic;c[k]=(c[k]||0)+1});return"<p>"+Object.entries(c).map(([k,n])=>`${esc(k)}: <b>${n}</b>`).join("<br>")+"</p>"})()}<div class="tbl"><table><tr><th>Image</th><th>Chapter</th><th>Source</th><th>Licence</th></tr>`+
+ imgs.map(([r,i])=>`<tr><td>${esc(i.t||i.c.split(/[–:.]/)[0])}</td><td>${esc(D(r).name)} · ${esc(i.ch||"")}</td><td>${esc(i.by)} · ${esc(i.src)}<br><small>${esc(i.url)}</small></td><td>${esc(i.lic)}</td></tr>`).join("")+`</table></div></div>
+ <div class="card"><b>Video credits</b><p class="mut">Offline clips are from Wikimedia Commons under the licences shown; they were trimmed (≤20 s), resized and re-encoded silently. YouTube links open externally and are owned by their channels.</p><div class="tbl"><table><tr><th>Clip</th><th>Author</th><th>Licence</th></tr>${Object.values((window.MEDIA||{}).vids||{}).map(x=>`<tr><td>${esc(x.title)}<br><small>${esc(x.url)}</small></td><td>${esc(x.by)}</td><td>${esc(x.lic)}</td></tr>`).join("")}</table></div></div>
+ <div class="card"><b>Developer / publisher</b><p>Chundu Laboratories</p><p class="mut">© 2026 Chundu Laboratories. All rights reserved. This copyright covers the app and its original notes, questions and design. Third-party images and videos remain under their own licences (listed above) and are not covered by this notice.</p></div>
+ <div class="card"><b>App icon</b><p class="mut">Heart-with-ECG icon drawn for this app.</p><b>Privacy</b><p class="mut">Everything works offline. No accounts or tracking; the only network use is the optional ‘Watch on YouTube’ links, which open outside the app; your data stays on this device unless you export it.</p></div>`}
+/* ---------- SEARCH ---------- */
+let SQ="";
+function search(v){if(!$("#sq")){v.innerHTML=`<input type="search" id="sq" placeholder="Search notes, facts and questions…" autocomplete="off"><div id="sr"></div>`;
+  $("#sq").value=SQ;let tm;$("#sq").oninput=e=>{SQ=e.target.value;clearTimeout(tm);tm=setTimeout(results,180)}}
+ results();try{$("#sq").focus()}catch(e){}}
+function results(){const box=$("#sr");if(!box)return;const w=SQ.toLowerCase().split(/\s+/).filter(x=>x.length>1);
+ if(!w.length){box.innerHTML=`<p class="mut">Type at least 2 letters. Searches summary notes, flashcard facts and question stems/answers in all sections.</p>`;return}
+ const hit=s=>{s=s.toLowerCase();return w.every(x=>s.includes(x))};
+ const hl=t=>{let h=esc(t);w.forEach(x=>{const re=new RegExp("("+x.replace(/[.*+?^${}()|[\]\\]/g,"\\$&").replace(/[&<>"']/g,"")+")","ig");if(x.replace(/[&<>"']/g,""))h=h.replace(re,'<mark class="hi">$1</mark>')});return h};
+ const N=[],F=[],Q=[];
+ REG.forEach(r=>{const d=D(r);d.notes.forEach(n=>{if(hit(n[0]+" "+n[1]))N.push([r,n])});d.fc.forEach(f=>{if(hit(f[0]+" "+f[1]))F.push(r+"|"+f[0])});d.mcq.forEach(q=>{if(hit(q.q+" "+q.o[q.a]))Q.push(q)})});
+ box.innerHTML=`<p class="mut">${N.length} notes · ${F.length} facts · ${Q.length} questions</p>`+
+ (N.length?`<h3>Notes</h3>`+N.slice(0,20).map(([r,n])=>`<details><summary>${esc(D(r).name)} · ${hl(n[0])}</summary><p>${hl(n[1])}</p></details>`).join(""):"")+
+ (F.length?`<h3>Facts</h3>`+F.slice(0,40).map(k=>{const[r,f]=FCK[k];return`<div class="card">${starF(k)}<small class="mut">${esc(D(r).name)} · <a href="#/study/${r}/${chIdx(r,f[2])}">${esc(f[2])}</a></small><div><b>${hl(f[0])}</b></div><div>${hl(f[1])}</div></div>`}).join("")+(F.length>40?`<p class="mut">…${F.length-40} more facts – refine your search</p>`:""):"")+
+ (Q.length?`<h3>Questions</h3>`+(Q.length>1?`<button id="sqz">Quiz these ${Math.min(Q.length,50)} questions</button>`:"")+Q.slice(0,30).map(qcard).join("")+(Q.length>30?`<p class="mut">…${Q.length-30} more questions</p>`:""):"");
+ const b=$("#sqz");if(b)b.onclick=()=>startQuiz(shuf(Q).slice(0,50),{r:"all",ci:"",label:"Search: "+SQ})}
+/* ---------- BOOKMARKS ---------- */
+function bookmarks(v){const Q=Object.keys(S.bm.q).map(i=>byId[i]).filter(Boolean),F=Object.keys(S.bm.f).filter(k=>FCK[k]);
+ v.innerHTML=`<h2>★ Bookmarked questions (${Q.length})</h2>`+(Q.length?`<button class="primary" id="bq">Quiz bookmarked questions</button>`+Q.map(qcard).join(""):`<p class="mut card">Tap ☆ on any question to save it here.</p>`)+
+ `<h2>★ Bookmarked flashcards (${F.length})</h2>`+(F.length?`<button id="bf">Study bookmarked cards</button>`+F.map(fcard).join(""):`<p class="mut card">Tap ☆ on any flashcard or key fact to save it here.</p>`);
+ const bq=$("#bq");if(bq)bq.onclick=()=>startQuiz(shuf(Q),{r:"all",ci:"",label:"Bookmarked questions",review:true});
+ const bf=$("#bf");if(bf)bf.onclick=()=>{const r=FCK[F[0]][0];S.lc={r,ci:"",bmOnly:true,i:0,order:null};save();go("cards")}}
+/* ---------- global events / init ---------- */
+document.addEventListener("click",e=>{const b=e.target.closest("[data-go],[data-bmq],[data-bmf],[data-prac]");if(!b)return;
+ if(b.dataset.go!=null){e.preventDefault();go(b.dataset.go)}
+ else if(b.dataset.bmq){const id=b.dataset.bmq;if(S.bm.q[id])delete S.bm.q[id];else S.bm.q[id]=1;save();$$(`[data-bmq="${typeof CSS!="undefined"&&CSS.escape?CSS.escape(id):id}"]`).forEach(x=>x.textContent=S.bm.q[id]?"★":"☆")}
+ else if(b.dataset.bmf){e.stopPropagation();const k=b.dataset.bmf;if(S.bm.f[k])delete S.bm.f[k];else S.bm.f[k]=1;save();b.textContent=S.bm.f[k]?"★":"☆"}
+ else if(b.dataset.prac){const[r,i]=b.dataset.prac.split("|");practise(r,D(r).topics[+i])}});
+apply();render();
+/* ---------- full-screen image viewer (pinch / double-tap / pan / wheel) ---------- */
+(function(){const ov=document.createElement("div");ov.id="iv";ov.setAttribute("role","dialog");
+ ov.innerHTML=`<div class="zb"><button data-z="in" aria-label="Zoom in">＋</button><button data-z="out" aria-label="Zoom out">－</button><button data-z="fit" aria-label="Fit">⤢</button></div><button class="x" aria-label="Close">✕</button><img alt=""><div class="cap"></div>`;
+ document.body.appendChild(ov);const im=ov.querySelector("img"),cap=ov.querySelector(".cap");
+ let s=1,x=0,y=0,bw=0,bh=0,open=false;const P=new Map();let pinch=null,last=0,moved=false,tdbl=0;
+ function fit(){const vw=innerWidth,vh=innerHeight,nw=im.naturalWidth||1,nh=im.naturalHeight||1,k=Math.min(vw/nw,vh/nh,3);bw=nw*k;bh=nh*k;im.style.width=bw+"px";im.style.height=bh+"px";im.style.maxWidth="none";im.style.maxHeight="none";s=1;x=(vw-bw)/2;y=(vh-bh)/2;apply()}
+ function clamp(){const vw=innerWidth,vh=innerHeight,w=bw*s,h=bh*s;x=w<=vw?(vw-w)/2:Math.min(0,Math.max(vw-w,x));y=h<=vh?(vh-h)/2:Math.min(0,Math.max(vh-h,y))}
+ function apply(){clamp();im.style.left="0";im.style.top="0";im.style.transform=`translate(${x}px,${y}px) scale(${s})`}
+ function zoomAt(ns,cx,cy){ns=Math.max(1,Math.min(8,ns));x=cx-(cx-x)*ns/s;y=cy-(cy-y)*ns/s;s=ns;apply()}
+ window.openViewer=function(src,text){im.onload=fit;im.src=src;cap.textContent=text||"";ov.classList.add("on");open=true;document.body.style.overflow="hidden";try{history.pushState({iv:1},"")}catch(e){}if(im.complete)fit()};
+ function close(fromPop){if(!open)return;open=false;ov.classList.remove("on");document.body.style.overflow="";P.clear();pinch=null;if(!fromPop){try{if(history.state&&history.state.iv)history.back()}catch(e){}}}
+ window.closeViewer=()=>close(false);window.ivOpen=()=>open;
+ window.addEventListener("popstate",()=>{if(open)close(true)});
+ ov.querySelector(".x").onclick=e=>{e.stopPropagation();close(false)};
+ ov.querySelector(".zb").onclick=e=>{const b=e.target.closest("button");if(!b)return;e.stopPropagation();const cx=innerWidth/2,cy=innerHeight/2;if(b.dataset.z=="in")zoomAt(s*1.6,cx,cy);else if(b.dataset.z=="out")zoomAt(s/1.6,cx,cy);else fit()};
+ document.addEventListener("keydown",e=>{if(open&&e.key=="Escape")close(false)});
+ ov.addEventListener("wheel",e=>{e.preventDefault();zoomAt(s*(e.deltaY<0?1.2:1/1.2),e.clientX,e.clientY)},{passive:false});
+ ov.addEventListener("dblclick",e=>{e.preventDefault();if(Date.now()-tdbl<700)return;s>1.05?fit():zoomAt(2.5,e.clientX,e.clientY)});
+ ov.addEventListener("pointerdown",e=>{if(e.target.closest("button"))return;ov.setPointerCapture&&ov.setPointerCapture(e.pointerId);P.set(e.pointerId,{x:e.clientX,y:e.clientY});moved=false;
+  if(P.size==2){const[a,b]=[...P.values()];pinch={d:Math.hypot(a.x-b.x,a.y-b.y),s,cx:(a.x+b.x)/2,cy:(a.y+b.y)/2,x,y}}});
+ ov.addEventListener("pointermove",e=>{if(!P.has(e.pointerId))return;const p=P.get(e.pointerId),dx=e.clientX-p.x,dy=e.clientY-p.y;P.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(Math.abs(dx)+Math.abs(dy)>2)moved=true;
+  if(P.size>=2&&pinch){const[a,b]=[...P.values()],d=Math.hypot(a.x-b.x,a.y-b.y),cx=(a.x+b.x)/2,cy=(a.y+b.y)/2,ns=Math.max(1,Math.min(8,pinch.s*d/pinch.d));
+   x=cx-(pinch.cx-pinch.x)*ns/pinch.s;y=cy-(pinch.cy-pinch.y)*ns/pinch.s;s=ns;apply()}
+  else if(P.size==1&&s>1){x+=dx;y+=dy;apply()}});
+ const up=e=>{if(!P.has(e.pointerId))return;P.delete(e.pointerId);if(P.size<2)pinch=null;
+  if(e.type=="pointerup"&&!moved&&P.size==0&&e.pointerType!="mouse"){const t=Date.now();if(t-last<300){s>1.05?fit():zoomAt(2.5,e.clientX,e.clientY);last=0;tdbl=t}else last=t}};
+ ov.addEventListener("pointerup",up);ov.addEventListener("pointercancel",up);
+ window.addEventListener("resize",()=>{if(open)fit()});
+ document.addEventListener("click",e=>{const i=e.target.closest("main img");if(!i||i.closest("#iv"))return;e.preventDefault();const f=i.closest("figure");openViewer(i.getAttribute("src"),f?(f.querySelector("figcaption").innerText||f.querySelector("figcaption").textContent).replace(/\s*\n\s*/g," · "):(i.alt||""))});
+})();
+</script><script>if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(e=>console.warn("SW",e)));</script></body></html>
